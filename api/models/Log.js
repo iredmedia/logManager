@@ -31,8 +31,20 @@ module.exports = {
     message: {
         type: 'STRING'
     },
+    level: {
+        type: 'STRING'
+    },
     level_name: {
         type: 'STRING'
-    }
+    },
+    context: {
+        type: 'STRING'
+    },
+    formatted: {
+        type: 'STRING'
+    },
+    created_at: {
+        type: 'DATE'
+    },
   }
 }
