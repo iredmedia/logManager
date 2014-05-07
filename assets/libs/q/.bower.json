@@ -1,0 +1,15 @@
+{
+  "name": "q",
+  "homepage": "https://github.com/microjs/q",
+  "version": "0.8.11",
+  "_release": "0.8.11",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.8.11",
+    "commit": "767fcb0aec79bb5b18992eead28c5475d511f30a"
+  },
+  "_source": "git://github.com/microjs/q.git",
+  "_target": "~0.8.11",
+  "_originalSource": "microjs/q",
+  "_direct": true
+}

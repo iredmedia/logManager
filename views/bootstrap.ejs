@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <title>New Sails App</title>
 
@@ -34,6 +34,12 @@
     <!--STYLES END-->
 
     <!--SCRIPTS-->
+    <script src="/libs/angular/angular.js"></script>
+    <script src="/libs/angular-route/angular-route.js"></script>
+    <script src="/libs/angular-socket-io/socket.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/controllers.js"></script>
+    <script src="/js/services.js"></script>
     <script src="/libs/react/react.js"></script>
     <script src="/libs/jquery/dist/jquery.min.js"></script>
     <script src="/libs/underscore/underscore.js"></script>
@@ -48,6 +54,9 @@
   </head>
 
   <body>
+
+    <div ng-view></div>
+
     <%- body %>
 
 
@@ -74,7 +83,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+    <script type="text/javascript" src="/jst.js"></script>
     <!--TEMPLATES END-->
 
 

@@ -1,10 +1,16 @@
 define([
         '/js/log-line.js',
-        '/js/log-list.js'
+        '/js/log-list.js',
+        '/js/router.js'
     ], function(
         LogLine,
-        LogList
+        LogList,
+        Router
     ) {
+        new Router();
+
+        Backbone.history.start();
+
         var Log = Backbone.Model.extend({
             urlRoot: '/log'
         })
@@ -26,7 +32,7 @@ define([
         });
 
         var logList = new LogList({
-            el: $('.starter-template'),
+            el: $('#content'),
             collection: logCollection
         })
 

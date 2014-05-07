@@ -15,39 +15,10 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 // Comment controller with generated actions.
-
+var Q = require('q');
 
 var LogController = {
     test: function(req, res) {
-
-        var lastUpdateId = 0;
-
-        function isUpdatedLog()
-        {
-            Log.find()
-                .sort({ id: 'desc' })
-                .limit(1)
-                .exec(function(err, logList) {
-                    logdata = logList[0];
-
-                    if (lastUpdateId == 0) {
-                        lastUpdateId = logdata.id;
-                    }
-
-                    if (lastUpdateId != logdata.id) {
-                        sails.io.sockets.emit('some_event', { hello: 'world' });
-                    }
-
-                    lastUpdateId = logdata.id;
-                });
-        }
-
-        sails.io.on('connection', function (socket) {
-            setInterval(function(){
-                isUpdatedLog();
-            }, 2000);
-        });
-
         return res.view({
             _layoutFile: '../bootstrap',
             data: 'test data'
