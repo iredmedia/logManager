@@ -6,7 +6,7 @@
             <td>{{driver.level_name}}</td>
             <td>{{driver.message}}</td>
             <td>
-                <pre>{{parseJson(driver.context)}}</pre>
+                <pre>{{driver.context | jsonFormat}}</pre>
             </td>
             <td>{{driver.created_at}}</td>
         </tr>
