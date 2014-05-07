@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <title>New Sails App</title>
 
@@ -32,9 +32,28 @@
     <link rel="stylesheet" href="/styles/importer.css">
     <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
     <!--STYLES END-->
+
+    <!--SCRIPTS-->
+    <script src="/js/socket.io.js"></script>
+    <script src="/js/sails.io.js"></script>
+    <script src="/js/connection.example.js"></script>
+    <!--SCRIPTS END-->
+    <script src="/libs/react/react.js"></script>
+    <script src="/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/libs/underscore/underscore.js"></script>
+    <script src="/libs/backbone/backbone.js"></script>
+    <script src="/libs/backbone-react-component/lib/component.js"></script>
+    <script src="/js/socket.io.js"></script>
+    <script src="/js/sails.io.js"></script>
+    <script src="/js/connection.example.js"></script>
+
+    <script data-main="/js/log-page.js" src="/libs/requirejs/require.js"></script>
   </head>
 
   <body>
+
+    <div ng-view></div>
+
     <%- body %>
 
 
@@ -87,11 +106,5 @@
           + Use a different preprocessor, like TypeScript
 
     -->
-
-    <!--SCRIPTS-->
-    <script src="/js/socket.io.js"></script>
-    <script src="/js/sails.io.js"></script>
-    <script src="/js/connection.example.js"></script>
-    <!--SCRIPTS END-->
   </body>
 </html>

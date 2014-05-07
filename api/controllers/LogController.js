@@ -15,12 +15,10 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 // Comment controller with generated actions.
-var Q = require('q');
-
 var LogController = {
-    test: function(req, res) {
+    backbone: function(req, res) {
         return res.view({
-            _layoutFile: '../bootstrap',
+            _layoutFile: '../backbone',
             data: 'test data'
         });
     }
