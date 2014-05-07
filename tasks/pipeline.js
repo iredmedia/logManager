@@ -23,20 +23,6 @@ var cssFilesToInject = [
 // Client-side javascript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
-//  'libs/angular/angular.js',
-//  'libs/angular-route/angular-route.js',
-//  'libs/angular-socket-io/socket.js',
-//  'js/app.js',
-//  'js/controllers.js',
-//  'js/services.js',
-  // Below, as a demonstration, you'll see the built-in dependencies
-  // linked in the proper order order
-//  'libs/react/react.js',
-//  'libs/jquery/dist/jquery.min.js',
-//  'libs/underscore/underscore.js',
-//  'libs/backbone/backbone.js',
-//  'libs/backbone-react-component/lib/component.js',
-  //'libs/bootstrap/dist/js/bootstrap.min.js',
   // Bring in the socket.io client
   'js/socket.io.js',
 

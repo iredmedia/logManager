@@ -19,7 +19,11 @@ var LogController = {
     backbone: function(req, res) {
         return res.view({
             _layoutFile: '../backbone',
-            data: 'test data'
+        });
+    },
+    angular: function(req, res) {
+        return res.view({
+            _layoutFile: '../angular',
         });
     }
 }
