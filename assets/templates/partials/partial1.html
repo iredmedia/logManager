@@ -1,12 +1,14 @@
-  <table>
-    <thead>
-      <tr><th colspan="4">Drivers Championship Standings</th></tr>
-    </thead>
+<table className="table table-bordered">
     <tbody>
-      <tr ng-repeat="driver in driversList">
-        <td>{{driver.id}}</td>
-        <td>{{driver.level}}</td>
-        <td>{{driver.channel}}</td>
-      </tr>
+        <tr ng-repeat="driver in driversList">
+            <td>{{driver.id}}</td>
+            <td>{{driver.created_at}}</td>
+            <td>{{driver.level_name}}</td>
+            <td>{{driver.message}}</td>
+            <td>
+                <pre>{{parseJson(driver.context)}}</pre>
+            </td>
+            <td>{{driver.created_at}}</td>
+        </tr>
     </tbody>
-  </table>
+</table>

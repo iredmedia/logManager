@@ -16,6 +16,10 @@ angular.module('myApp.controllers', [])
         });;
     }
 
+    $scope.parseJson = function (jsonData) {
+        return JSON.stringify(JSON.parse(jsonData), undefined, 2)
+    }
+
     $scope.driversList = [];
 
       mySocket.on('some_event', function () {
