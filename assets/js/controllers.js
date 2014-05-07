@@ -16,6 +16,16 @@ angular.module('myApp.controllers', [])
         });;
     }
 
+    $scope.getClass = function (info) {
+        if (info == 'INFO') {
+            return 'success';
+        }
+
+        if (info == 'ERROR') {
+            return 'danger';
+        }
+    }
+
     $scope.driversList = [];
 
       mySocket.on('some_event', function () {

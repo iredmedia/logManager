@@ -1,6 +1,6 @@
-<table className="table table-bordered">
+<table class="table table-bordered">
     <tbody>
-        <tr ng-repeat="driver in driversList">
+        <tr ng-repeat="driver in driversList" class="{{getClass(driver.level_name)}}">
             <td>{{driver.id}}</td>
             <td>{{driver.created_at}}</td>
             <td>{{driver.level_name}}</td>
