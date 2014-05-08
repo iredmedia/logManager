@@ -3,13 +3,9 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-.controller('LogListController', function($scope, $rootScope, logRestApi, mySocket) {
-
-    function refreshList($channel)  {
-        if (typeof($channel) === "undefined") { $channel = 'ERROR'; }
-
-
-        logRestApi.getErrorList($channel).success(function (response) {
+.controller('LogListController', function($scope, tabFilterService, logRestApi, mySocket) {
+    function refreshList()  {
+        logRestApi.getErrorList(tabFilterService.getActiveId()).success(function (response) {
             $scope.list = response;
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
@@ -32,35 +28,22 @@ angular.module('myApp.controllers', [])
         refreshList();
     });
 
-    $rootScope.$on('tab:changed', function ($level_name, id) {
-        refreshList(id);
-    });
+    $scope.$watch(tabFilterService.getActiveId, function () {
+       refreshList();
+    }, true)
 
     refreshList();
 })
-.controller('TabController', function ($scope) {
-    $scope.activeTabId = 'error';
-
-    $scope.tabList = [
-        {
-            id: 'ERROR',
-            name: 'Error'
-        },
-        {
-            id: 'INFO',
-            name: 'Info'
-        },
-    ]
+.controller('TabController', function ($scope, tabFilterService) {
+    $scope.tabList = tabFilterService.getTabList();
 
     $scope.getActiveClass = function (tab) {
-        if (tab.id == $scope.activeTabId) {
+        if (tab.id == tabFilterService.getActiveId()) {
             return 'active';
         }
     }
 
     $scope.clicked = function (tab) {
-        $scope.activeTabId = tab.id;
-
-        $scope.$emit('tab:changed', tab.id);
+        tabFilterService.setActiveId(tab.id);
     }
 });

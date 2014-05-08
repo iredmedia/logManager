@@ -18,5 +18,28 @@ angular.module('myApp.services', [])
 
     return logRestApi;
 })
-.factory('tabFilterService', function() {
+.factory('tabFilterService', function($rootScope) {
+    var activeTabId = 'ERROR',
+        tabList = [
+            {
+                id: 'ERROR',
+                name: 'Error'
+            },
+            {
+                id: 'INFO',
+                name: 'Info'
+            },
+        ];
+
+    return {
+        getActiveId: function () {
+            return activeTabId;
+        },
+        setActiveId: function (tabId) {
+            activeTabId = tabId;
+        },
+        getTabList: function () {
+            return tabList;
+        }
+    }
 });
