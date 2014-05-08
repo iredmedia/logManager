@@ -58,4 +58,28 @@ angular.module('myApp.controllers', [])
     });
 
     refreshList();
+})
+.controller('TabController', function ($scope) {
+    $scope.activeTabId = 'error';
+
+    $scope.tabList = [
+        {
+            id: 'error',
+            name: 'Error'
+        },
+        {
+            id: 'info',
+            name: 'Info'
+        },
+    ]
+
+    $scope.getActiveClass = function (tab) {
+        if (tab.id == $scope.activeTabId) {
+            return 'active';
+        }
+    }
+
+    $scope.clicked = function (tab) {
+        $scope.activeTabId = tab.id;
+    }
 });
