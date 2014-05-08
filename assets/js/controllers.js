@@ -3,16 +3,13 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('MyCtrl1', function($scope, ergastAPIservice, mySocket) {
+.controller('MyCtrl1', function($scope, logRestApi, mySocket) {
 
     function refreshList()  {
-        ergastAPIservice.getDrivers().success(function (response) {
-            //Dig into the responde to get the relevant data
-            $scope.driversList = response;
+        logRestApi.getErrorList().success(function (response) {
+            $scope.list = response;
         }).error(function(data, status, headers, config) {
-          // called asynchronously if an error occurs
             console.log(data, status, headers, config);
-          // or server returns response with an error status.
         });;
     }
 
@@ -26,14 +23,39 @@ angular.module('myApp.controllers', [])
         }
     }
 
-    $scope.driversList = [];
+    $scope.list = [];
 
-      mySocket.on('some_event', function () {
+    mySocket.on('some_event', function () {
         refreshList();
-      });
+    });
 
-      refreshList();
-  })
-  .controller('MyCtrl2', ['$scope', function($scope) {
+    refreshList();
+})
+.controller('MyCtrl2', function($scope, logRestApi, mySocket) {
 
-  }]);
+    function refreshList()  {
+        logRestApi.getInfoList().success(function (response) {
+            $scope.list = response;
+        }).error(function(data, status, headers, config) {
+            console.log(data, status, headers, config);
+        });;
+    }
+
+    $scope.getClass = function (info) {
+        if (info == 'INFO') {
+            return 'success';
+        }
+
+        if (info == 'ERROR') {
+            return 'danger';
+        }
+    }
+
+    $scope.list = [];
+
+    mySocket.on('some_event', function () {
+        refreshList();
+    });
+
+    refreshList();
+});

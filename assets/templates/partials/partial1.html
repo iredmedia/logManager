@@ -1,14 +1,14 @@
 <table class="table table-bordered">
     <tbody>
-        <tr ng-repeat="driver in driversList" class="{{getClass(driver.level_name)}}">
-            <td>{{driver.id}}</td>
-            <td>{{driver.created_at}}</td>
-            <td>{{driver.level_name}}</td>
-            <td>{{driver.message}}</td>
+        <tr ng-repeat="log in list" class="{{getClass(log.level_name)}}">
+            <td>{{log.id}}</td>
+            <td>{{log.created_at}}</td>
+            <td>{{log.level_name}}</td>
+            <td>{{log.message}}</td>
             <td>
-                <pre>{{driver.context | jsonFormat}}</pre>
+                <pre>{{log.context | jsonFormat}}</pre>
             </td>
-            <td>{{driver.created_at}}</td>
+            <td>{{log.created_at}}</td>
         </tr>
     </tbody>
 </table>

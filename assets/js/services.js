@@ -1,20 +1,32 @@
 'use strict';
 
 angular.module('myApp.services', [])
-  .factory('ergastAPIservice', function($http) {
+.factory('logRestApi', function($http) {
+    var logRestApi = {};
 
-    var ergastAPI = {};
-
-    ergastAPI.getDrivers = function() {
-      return $http({
-        method: 'GET',
-        url:    '/log',
-        params: {
-          limit: 100,
-          sort:  'id DESC'
-        }
-      });
+    logRestApi.getErrorList = function() {
+        return $http({
+            method: 'GET',
+            url:    '/log',
+            params: {
+                limit: 100,
+                sort:  'id DESC',
+                level_name: 'ERROR'
+            }
+        });
     }
 
-    return ergastAPI;
-  });
+    logRestApi.getInfoList = function() {
+        return $http({
+            method: 'GET',
+            url:    '/log',
+            params: {
+                limit: 100,
+                sort:  'id DESC',
+                level_name: 'INFO'
+            }
+        });
+    }
+
+    return logRestApi;
+});
