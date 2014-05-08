@@ -4,6 +4,8 @@
 
 angular.module('myApp.controllers', [])
 .controller('LogListController', function($scope, tabFilterService, logRestApi, mySocket) {
+    $scope.list = [];
+
     function refreshList()  {
         logRestApi.getErrorList(tabFilterService.getActiveId()).success(function (response) {
             $scope.list = response;
@@ -21,8 +23,6 @@ angular.module('myApp.controllers', [])
             return 'danger';
         }
     }
-
-    $scope.list = [];
 
     mySocket.on('some_event', function () {
         refreshList();

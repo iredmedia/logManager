@@ -3,8 +3,8 @@
 // Router
 define(
     [
-        '/js/foo-component.js',
-        '/js/bar-component.js'
+        '/js/backbone/foo-component.js',
+        '/js/backbone/bar-component.js'
     ], function(
         FooComponent,
         BarComponent

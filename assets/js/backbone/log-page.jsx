@@ -1,7 +1,7 @@
 define([
-        '/js/log-line.js',
-        '/js/log-list.js',
-        '/js/router.js'
+        '/js/backbone/log-line.js',
+        '/js/backbone/log-list.js',
+        '/js/backbone/router.js'
     ], function(
         LogLine,
         LogList,
