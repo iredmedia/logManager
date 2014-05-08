@@ -3,10 +3,13 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-.controller('MyCtrl1', function($scope, logRestApi, mySocket) {
+.controller('LogListController', function($scope, $rootScope, logRestApi, mySocket) {
 
-    function refreshList()  {
-        logRestApi.getErrorList().success(function (response) {
+    function refreshList($channel)  {
+        if (typeof($channel) === "undefined") { $channel = 'ERROR'; }
+
+
+        logRestApi.getErrorList($channel).success(function (response) {
             $scope.list = response;
         }).error(function(data, status, headers, config) {
             console.log(data, status, headers, config);
@@ -29,32 +32,8 @@ angular.module('myApp.controllers', [])
         refreshList();
     });
 
-    refreshList();
-})
-.controller('MyCtrl2', function($scope, logRestApi, mySocket) {
-
-    function refreshList()  {
-        logRestApi.getInfoList().success(function (response) {
-            $scope.list = response;
-        }).error(function(data, status, headers, config) {
-            console.log(data, status, headers, config);
-        });;
-    }
-
-    $scope.getClass = function (info) {
-        if (info == 'INFO') {
-            return 'success';
-        }
-
-        if (info == 'ERROR') {
-            return 'danger';
-        }
-    }
-
-    $scope.list = [];
-
-    mySocket.on('some_event', function () {
-        refreshList();
+    $rootScope.$on('tab:changed', function ($level_name, id) {
+        refreshList(id);
     });
 
     refreshList();
@@ -64,11 +43,11 @@ angular.module('myApp.controllers', [])
 
     $scope.tabList = [
         {
-            id: 'error',
+            id: 'ERROR',
             name: 'Error'
         },
         {
-            id: 'info',
+            id: 'INFO',
             name: 'Info'
         },
     ]
@@ -81,5 +60,7 @@ angular.module('myApp.controllers', [])
 
     $scope.clicked = function (tab) {
         $scope.activeTabId = tab.id;
+
+        $scope.$emit('tab:changed', tab.id);
     }
 });
